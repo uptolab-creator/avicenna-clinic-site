@@ -4,9 +4,9 @@ import { useQuery } from "@tanstack/react-query";
 
 import { Editable } from "@/components/live-edit/LiveEdit";
 import { Reveal } from "@/components/Reveal";
-import photoSurgery from "@/assets/image.webp.asset.json";
-import photoNurse from "@/assets/image.png.asset.json";
-import photoXray from "@/assets/image-2.png.asset.json";
+import photoSurgery from "@/assets/hero-surgery.webp";
+import photoNurse from "@/assets/hero-specialists.webp";
+import photoXray from "@/assets/hero-diagnostics.webp";
 import { fetchActiveHeroSlides, type HeroSlideWithUrl } from "@/lib/hero-slides";
 import { BOOKING_URL } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
@@ -15,9 +15,9 @@ const AUTOPLAY_MS = 6000;
 
 /** Фолбэк-слайды из фотографий клиники, если в админке ещё нет слайдов. */
 const FALLBACK_SLIDES: HeroSlideWithUrl[] = [
-  { id: "f1", image_url: photoSurgery.url, title: "Хирургия", subtitle: null },
-  { id: "f2", image_url: photoNurse.url, title: "Наши специалисты", subtitle: null },
-  { id: "f3", image_url: photoXray.url, title: "Диагностика", subtitle: null },
+  { id: "f1", image_url: photoSurgery, title: "Хирургия", subtitle: null },
+  { id: "f2", image_url: photoNurse, title: "Наши специалисты", subtitle: null },
+  { id: "f3", image_url: photoXray, title: "Диагностика", subtitle: null },
 ].map((s) => ({
   ...s,
   sort_order: 0,

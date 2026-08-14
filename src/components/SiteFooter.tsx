@@ -1,4 +1,4 @@
-import logo from "@/assets/logo-avicenna.png.asset.json";
+import logo from "@/assets/logo-avicenna.png";
 import { Editable } from "@/components/live-edit/LiveEdit";
 import { CLINIC } from "@/lib/clinic";
 import { BOOKING_URL } from "@/lib/site-config";
@@ -9,7 +9,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_1fr_1fr]">
         <div>
           <img
-            src={logo.url}
+            src={logo}
             alt="Клинико-диагностический центр «Авиценна»"
             width={840}
             height={393}

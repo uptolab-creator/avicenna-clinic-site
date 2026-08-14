@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
-import logo from "@/assets/logo-avicenna.png.asset.json";
+import logo from "@/assets/logo-avicenna.png";
 import { BOOKING_URL } from "@/lib/site-config";
 
 import { Editable } from "@/components/live-edit/LiveEdit";
@@ -35,7 +35,7 @@ export function SiteHeader({ breadcrumb }: { breadcrumb?: string }) {
         <div className="flex min-w-0 items-center gap-3">
           <Link to="/" className="flex shrink-0 items-center" aria-label="Авиценна — на главную">
             <img
-              src={logo.url}
+              src={logo}
               alt="Клинико-диагностический центр «Авиценна»"
               width={840}
               height={393}
