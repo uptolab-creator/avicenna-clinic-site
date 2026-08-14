@@ -151,6 +151,45 @@ export type Database = {
           },
         ]
       }
+      popups: {
+        Row: {
+          body: string | null
+          button_text: string | null
+          button_url: string | null
+          created_at: string
+          id: string
+          image_url: string | null
+          is_active: boolean
+          sort_order: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body?: string | null
+          button_text?: string | null
+          button_url?: string | null
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          sort_order?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: string | null
+          button_text?: string | null
+          button_url?: string | null
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          sort_order?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       hero_slides: {
         Row: {
           created_at: string

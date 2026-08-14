@@ -4,12 +4,14 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
 import { LiveEditProvider } from "@/components/live-edit/LiveEdit";
+import { PromoPopup } from "@/components/PromoPopup";
 import { SiteTypography } from "@/components/SiteTypography";
 import { fetchSiteContent } from "@/lib/site-content";
 import appCss from "../styles.css?url";
@@ -112,8 +114,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap",
       },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
-
-
     ],
   }),
   shellComponent: RootShell,
@@ -138,6 +138,8 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isAdminOrAuth = pathname.startsWith("/admin") || pathname.startsWith("/auth");
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -146,7 +148,7 @@ function RootComponent() {
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
       </LiveEditProvider>
+      {!isAdminOrAuth && <PromoPopup />}
     </QueryClientProvider>
   );
 }
-

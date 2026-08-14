@@ -16,6 +16,7 @@ import {
   X,
   ExternalLink,
   Sparkles,
+  MessageSquareText,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -30,6 +31,7 @@ const NAV: { to: string; label: string; icon: typeof LayoutDashboard; exact?: bo
   { to: "/admin/diagnostics", label: "Диагностика", icon: Microscope },
   { to: "/admin/branches", label: "Филиалы", icon: MapPin },
   { to: "/admin/media", label: "Медиа", icon: Images },
+  { to: "/admin/popups", label: "Попапы", icon: MessageSquareText },
   { to: "/admin/seo", label: "SEO", icon: Search },
   { to: "/admin/settings", label: "Настройки", icon: Settings },
 ];
@@ -40,9 +42,9 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
   const active = useMemo(
     () =>
-      NAV.filter((item) => (item.exact ? pathname === item.to : pathname.startsWith(item.to))).slice(
-        -1,
-      )[0],
+      NAV.filter((item) =>
+        item.exact ? pathname === item.to : pathname.startsWith(item.to),
+      ).slice(-1)[0],
     [pathname],
   );
 
