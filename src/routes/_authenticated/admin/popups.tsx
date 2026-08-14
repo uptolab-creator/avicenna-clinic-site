@@ -53,7 +53,7 @@ function AdminPopups() {
       values: Partial<
         Pick<
           PopupWithUrl,
-          "title" | "body" | "button_text" | "button_url" | "sort_order" | "is_active"
+          "title" | "body" | "button_text" | "note_text" | "sort_order" | "is_active"
         >
       >;
     }) => {
@@ -144,6 +144,9 @@ function AdminPopups() {
           </div>
           <div className="flex gap-2">
             <Button variant="outline" asChild>
+              <Link to="/admin/leads">Заявки</Link>
+            </Button>
+            <Button variant="outline" asChild>
               <Link to="/admin/hero">Баннер</Link>
             </Button>
             <Button variant="outline" asChild>
@@ -213,22 +216,20 @@ function AdminPopups() {
                   placeholder="Текст предложения"
                   onBlur={(e) => update.mutate({ id: popup.id, values: { body: e.target.value } })}
                 />
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <Input
-                    defaultValue={popup.button_text ?? ""}
-                    placeholder="Текст кнопки"
-                    onBlur={(e) =>
-                      update.mutate({ id: popup.id, values: { button_text: e.target.value } })
-                    }
-                  />
-                  <Input
-                    defaultValue={popup.button_url ?? ""}
-                    placeholder="Ссылка кнопки (например /checkups)"
-                    onBlur={(e) =>
-                      update.mutate({ id: popup.id, values: { button_url: e.target.value } })
-                    }
-                  />
-                </div>
+                <Input
+                  defaultValue={popup.button_text ?? ""}
+                  placeholder="Текст кнопки (например «Жду звонка»)"
+                  onBlur={(e) =>
+                    update.mutate({ id: popup.id, values: { button_text: e.target.value } })
+                  }
+                />
+                <Input
+                  defaultValue={popup.note_text ?? ""}
+                  placeholder="Примечание под кнопкой (необязательно)"
+                  onBlur={(e) =>
+                    update.mutate({ id: popup.id, values: { note_text: e.target.value } })
+                  }
+                />
                 <div className="flex flex-wrap items-center gap-4">
                   <div className="flex items-center gap-2">
                     <Label htmlFor={`order-${popup.id}`} className="text-sm">

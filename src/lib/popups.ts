@@ -8,7 +8,7 @@ export type Popup = {
   body: string | null;
   image_url: string | null;
   button_text: string | null;
-  button_url: string | null;
+  note_text: string | null;
   is_active: boolean;
   sort_order: number;
 };
@@ -44,7 +44,7 @@ async function withDisplayUrl(popups: Popup[]): Promise<PopupWithUrl[]> {
 export async function fetchActivePopup(): Promise<PopupWithUrl | null> {
   const { data, error } = await supabase
     .from("popups")
-    .select("id, title, body, image_url, button_text, button_url, is_active, sort_order")
+    .select("id, title, body, image_url, button_text, note_text, is_active, sort_order")
     .eq("is_active", true)
     .order("sort_order", { ascending: true })
     .limit(1);
@@ -58,7 +58,7 @@ export async function fetchActivePopup(): Promise<PopupWithUrl | null> {
 export async function fetchAllPopups(): Promise<PopupWithUrl[]> {
   const { data, error } = await supabase
     .from("popups")
-    .select("id, title, body, image_url, button_text, button_url, is_active, sort_order")
+    .select("id, title, body, image_url, button_text, note_text, is_active, sort_order")
     .order("sort_order", { ascending: true });
 
   if (error) throw error;

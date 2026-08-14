@@ -17,6 +17,7 @@ import {
   ExternalLink,
   Sparkles,
   MessageSquareText,
+  Inbox,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -32,6 +33,7 @@ const NAV: { to: string; label: string; icon: typeof LayoutDashboard; exact?: bo
   { to: "/admin/branches", label: "Филиалы", icon: MapPin },
   { to: "/admin/media", label: "Медиа", icon: Images },
   { to: "/admin/popups", label: "Попапы", icon: MessageSquareText },
+  { to: "/admin/leads", label: "Заявки", icon: Inbox },
   { to: "/admin/seo", label: "SEO", icon: Search },
   { to: "/admin/settings", label: "Настройки", icon: Settings },
 ];

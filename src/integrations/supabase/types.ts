@@ -160,6 +160,7 @@ export type Database = {
           id: string
           image_url: string | null
           is_active: boolean
+          note_text: string | null
           sort_order: number
           title: string
           updated_at: string
@@ -172,6 +173,7 @@ export type Database = {
           id?: string
           image_url?: string | null
           is_active?: boolean
+          note_text?: string | null
           sort_order?: number
           title: string
           updated_at?: string
@@ -184,11 +186,50 @@ export type Database = {
           id?: string
           image_url?: string | null
           is_active?: boolean
+          note_text?: string | null
           sort_order?: number
           title?: string
           updated_at?: string
         }
         Relationships: []
+      }
+      leads: {
+        Row: {
+          consent: boolean
+          created_at: string
+          id: string
+          name: string | null
+          phone: string
+          popup_id: string | null
+          status: string
+        }
+        Insert: {
+          consent?: boolean
+          created_at?: string
+          id?: string
+          name?: string | null
+          phone: string
+          popup_id?: string | null
+          status?: string
+        }
+        Update: {
+          consent?: boolean
+          created_at?: string
+          id?: string
+          name?: string | null
+          phone?: string
+          popup_id?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "leads_popup_id_fkey"
+            columns: ["popup_id"]
+            isOneToOne: false
+            referencedRelation: "popups"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       hero_slides: {
         Row: {
