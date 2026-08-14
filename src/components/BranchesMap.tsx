@@ -1,3 +1,4 @@
+import { BranchesGoogleMap } from "@/components/BranchesGoogleMap";
 import { CLINIC, doubleGisSearchUrl, googleMapsUrl } from "@/lib/clinic";
 
 /** Список филиалов с быстрыми ссылками на Google Maps, 2ГИС и звонок. */
@@ -15,6 +16,17 @@ export function BranchesMap() {
           <p className="text-muted-foreground mt-3 max-w-2xl text-base sm:text-lg">
             Выберите ближайший адрес и постройте маршрут в Google Maps или 2ГИС.
           </p>
+        </div>
+
+        <div className="border-border mb-8 h-[420px] overflow-hidden rounded-xl border">
+          <BranchesGoogleMap
+            points={CLINIC.branches.map((b) => ({
+              name: b.name,
+              address: `${b.street}, ${b.city}`,
+              latitude: b.latitude,
+              longitude: b.longitude,
+            }))}
+          />
         </div>
 
         <div className="grid auto-rows-fr gap-3 sm:grid-cols-2 lg:grid-cols-3">
